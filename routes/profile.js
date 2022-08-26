@@ -22,16 +22,20 @@ router.post("/createprofile", async (req, res) => {
 });
 router.put("/profile", async (req, res) => {
   const { name, accountName, profileImage } = req.body;
-  const respone = await db.profile.updateOne(
-    { accountName: accountName },
+  const respone = await db.user.updateOne(
+    { username: accountName },
     {
       $set: {
         name: name,
+        accountName: accountName,
         profileImage: profileImage,
+        followers: 0,
+        following: 0,
+        post: 0,
       },
     }
   );
-  const profile = await db.profile.findOne({ accountName: accountName });
+  const profile = await db.user.findOne({ accountName: accountName });
   return res.json({
     profile: profile,
   });
