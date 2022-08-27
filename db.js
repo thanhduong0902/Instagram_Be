@@ -3,7 +3,9 @@ const { MongoClient } = require("mongodb");
 const db = {};
 
 const connectDb = async () => {
-  const client = new MongoClient("mongodb://127.0.0.1:27017");
+  const client = new MongoClient(
+    "mongodb+srv://admin:xkTbGTkrCa5h82rh@cluster0.ivf69y9.mongodb.net/test"
+  );
   await client.connect();
   console.log("DB connected");
   const database = client.db("insta");
