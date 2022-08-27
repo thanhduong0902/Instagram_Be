@@ -19,7 +19,7 @@ router.get("/allpost", (req, res) => {
       console.log(err);
     });
 });
-router.get("/mypost", async (req, res) => {
+router.get("/mypost", (req, res) => {
   const { user } = req.body;
   db.post
     .find({ user: user })
